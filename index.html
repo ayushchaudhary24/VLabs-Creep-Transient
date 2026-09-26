@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Creep Transient — Virtual Laboratory</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="lab">
+      <header>
+        <h1>Creep Transient Based on Material Selection</h1>
+        <div class="top-controls">
+          <label
+            ><span id="langLabel">Language</span
+            ><select id="language" aria-label="Interface language">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+            </select></label
+          ><label
+            ><span id="audioLabel">Audio</span
+            ><select id="audio" aria-label="Audio language">
+              <option value="off">Audio off</option>
+              <option value="en">English</option>
+            </select></label
+          ><span class="audio-status" id="audioStatus" role="status"></span>
+        </div>
+      </header>
+      <div class="columns">
+        <section class="panel">
+          <h2 class="bar">PROCEDURE &amp; CONTROLS</h2>
+          <div class="body">
+            <div class="step">
+              <b>Current Step:</b>
+              <div id="step" aria-live="polite"></div>
+            </div>
+            <h3>Specimen Selection:</h3>
+            <div class="materials">
+              <button class="material" id="al" aria-pressed="false">
+                <span class="sample"></span>Al-1% Mg</button
+              ><button class="material" id="ni" aria-pressed="false">
+                <span class="sample nickel"></span>Nickel</button
+              ><button class="material" id="pt" aria-pressed="false">
+                <span class="sample platinum"></span>Platinum
+              </button>
+            </div>
+            <button class="wide" id="apply">APPLY LOAD</button
+            ><progress
+              id="progress"
+              max="1"
+              value="0"
+              aria-label="Experiment progress"
+            ></progress>
+            <div id="statusText" aria-live="polite"></div>
+            <button class="wide" id="show">SHOW RESULT</button>
+            <div class="history">
+              <button id="undo">↶ UNDO</button><button id="redo">↷ REDO</button>
+            </div>
+            <button class="wide" id="reset">RESET EXPERIMENT</button>
+            <details>
+              <summary>Theory &amp; formulas</summary>
+              <p></p>
+              <p></p>
+              <p></p>
+            </details>
+          </div>
+        </section>
+        <section class="panel">
+          <h2 class="bar">CREEP TESTING APPARATUS</h2>
+          <div class="stage">
+            <div id="canvas-container"></div>
+            <div
+              id="dropTarget"
+              class="drop-target"
+              role="region"
+              aria-label="Specimen drop zone"
+            ></div>
+            <div id="loading-screen">Initializing creep apparatus…</div>
+            <div class="stage-info">
+              <span class="badge" id="specimen">SPECIMEN: —</span
+              ><span class="badge" id="strainBadge">STRAIN: 0.00000</span>
+            </div>
+            <div class="stage-foot">
+              Drag to rotate · Scroll to zoom · Right-drag to pan<br />Constant-load
+              demonstration · Extension magnified 8×
+            </div>
+          </div>
+        </section>
+        <section class="panel">
+          <h2 class="bar">OUTPUT &amp; OBSERVATIONS</h2>
+          <div class="body">
+            <div class="console" id="console"></div>
+            <h3>Observation Table</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time<br />(normalized)</th>
+                    <th>Strain ε<br />(dimensionless)</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+
+            <h3>Result Graph</h3>
+            <div id="graph"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <dialog
+      class="fracture-dialog"
+      id="fractureDialog"
+      aria-labelledby="fractureTitle"
+    >
+      <h2 id="fractureTitle"></h2>
+      <button id="closeFracture"></button>
+    </dialog>
+    <script src="js/vendor/three-bundle.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
