@@ -9,4 +9,4 @@ Open `index.html` in a modern browser. No installation, server, or internet conn
 - `js/vendor/three-bundle.js`: bundled Three.js 0.160.0 and OrbitControls, for offline use.
 - `js/vendor/LICENSE-three.txt`: third-party license.
 
-Reference curve values are approximate image readings. The animation illustrates creep and fracture; it is not a calibrated fracture prediction.
+
